@@ -37,7 +37,7 @@ const onTimerStart = function () {
   updateClock(initialTime);
 
   intervalId = setInterval(() => {
-    currentTime = Date.now();
+    let currentTime = Date.now();
     remainingTime = date - currentTime;
 
     if (remainingTime < 0) {
