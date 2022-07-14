@@ -38,7 +38,7 @@ const onTimerStart = function () {
 
   intervalId = setInterval(() => {
     let currentTime = Date.now();
-    remainingTime = date - currentTime;
+    let remainingTime = date - currentTime;
 
     if (remainingTime < 0) {
       clearInterval(intervalId);
