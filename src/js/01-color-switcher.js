@@ -7,21 +7,26 @@ const startButtonRef = document.querySelector('button[data-start]');
 const stopButtonRef = document.querySelector('button[data-stop]');
 
 let intervalId = null;
-let isActive = false;
+stopButtonRef.disabled = true;
 
 const onSwitcherStart = function () {
-  if (isActive) {
+  if (startButtonRef.disabled) {
     return;
   }
+
   intervalId = setInterval(() => {
     bodyRef.style.backgroundColor = getRandomHexColor();
   }, 1000);
-  isActive = true;
+
+  startButtonRef.disabled = true;
+  stopButtonRef.disabled = false;
 };
 
 const onSwitcherStop = function () {
   clearInterval(intervalId);
-  isActive = false;
+
+  startButtonRef.disabled = false;
+  stopButtonRef.disabled = true;
 };
 
 startButtonRef.addEventListener('click', onSwitcherStart);

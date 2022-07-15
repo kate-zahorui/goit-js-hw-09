@@ -17,6 +17,7 @@ const options = {
 
 flatpickr('input#datetime-picker', options);
 
+const inputRef = document.querySelector('input#datetime-picker');
 const startButtonRef = document.querySelector('button[data-start]');
 const timerRefs = {
   days: document.querySelector('[data-days]'),
@@ -32,6 +33,9 @@ const onTimerStart = function () {
     Notiflix.Notify.failure('Please choose a date in the future');
     return;
   }
+
+  startButtonRef.disabled = true;
+  inputRef.disabled = true;
   startButtonRef.removeEventListener('click', onTimerStart);
   const initialTime = convertMs(date - startTime);
   updateClock(initialTime);
